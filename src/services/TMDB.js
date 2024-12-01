@@ -1,6 +1,6 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
 
-const tmdbApiKey = process.env.TMDB_KEY;
+const tmdbApiKey = import.meta.env.VITE_TMDB_KEY;
 const page = 1;
 
 //https://api.themoviedb.org/3/movie/popular?language=en-US&page=1

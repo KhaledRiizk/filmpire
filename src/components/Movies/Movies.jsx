@@ -11,11 +11,14 @@ import { useGetMoviesQuery } from "../../services/TMDB";
 import MovieList from "../MovieList/MovieList";
 
 const Movies = () => {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
   const { genreIdOrCategoryName } = useSelector(
     (state) => state.currentGenreOrCategory
   );
-  const { data, error, isFetching } = useGetMoviesQuery(genreIdOrCategoryName, page);
+  const { data, error, isFetching } = useGetMoviesQuery({
+    genreIdOrCategoryName,
+    page,}
+  );
 
   if (isFetching) {
     return (

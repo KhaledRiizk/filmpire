@@ -60,11 +60,24 @@ export default makeStyles((theme) => ({
     borderRadius: "10px",
   },
   buttonsContainer: {
-    display: 'flex',
-    justifyContent:'space-between',
-    width:'100%',
+    display: "flex",
+    justifyContent: "space-between",
+    width: "100%",
     [theme.breakpoints.down("sm")]: {
-      flexDirection:'column',
+      flexDirection: "column",
     },
-  }
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  videos: {
+    width: "50%",
+    height: "50%",
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+      height: "90%",
+    },
+  },
 }));

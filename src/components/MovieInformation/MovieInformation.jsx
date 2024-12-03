@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   Typography,
@@ -24,16 +24,25 @@ import {
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useGetMovieQuery } from "../../services/TMDB";
+import {
+  useGetMovieQuery,
+  useGetRecommendationsQuery,
+} from "../../services/TMDB";
 import useStyles from "./styles";
 import genreIcons from "../../assets/genres";
 import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
+import MovieList from "../MovieList/MovieList";
 
 const MovieInformation = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { id } = useParams();
+
+  const [open, setOpen] = useState(false);
+
   const { data, isFetching, error } = useGetMovieQuery(id);
+  const { data: recommendations, isFetching: isRecommendationsFetching } =
+    useGetRecommendationsQuery({ movie_id: id, list: "recommendations" });
 
   const isStarred = true;
   const isListed = true;
@@ -144,7 +153,7 @@ const MovieInformation = () => {
                       <Typography color="textPrimary">
                         {character?.name}
                       </Typography>
-                      <Typography color="textSecondary">
+                      <Typography color="textfalseary">
                         {character.character.split("/")}
                       </Typography>
                     </Grid>
@@ -172,7 +181,7 @@ const MovieInformation = () => {
                 >
                   IMDB
                 </Button>
-                <Button onClick={() => {}} href="#" endIcon={<Theaters />}>
+                <Button onClick={() => setOpen(true)} href="#" endIcon={<Theaters />}>
                   Trailer
                 </Button>
               </ButtonGroup>
@@ -213,6 +222,32 @@ const MovieInformation = () => {
           </div>
         </Grid>
       </Grid>
+      <Box marginTop="5rem" width="100%">
+        <Typography variant="h3" gutterBottom align="center">
+          You might also like
+        </Typography>
+        {recommendations ? (
+          <MovieList movies={recommendations} numberOfMovies={6} />
+        ) : (
+          <Box>Sorry, nothing was found.</Box>
+        )}
+      </Box>
+      <Modal
+        closeAfterTransition
+        className={classes.modal}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        {data?.videos?.results?.length > 0 && (
+          <iframe
+            autoPlay
+            className={classes.videos}
+            title="Trailer"
+            src={`https://www.youtube.com/embed/${data?.videos?.results[0]?.key}`}
+            allow="autoplay"
+          />
+        )}
+      </Modal>
     </Grid>
   );
 };

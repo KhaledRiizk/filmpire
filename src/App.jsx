@@ -6,7 +6,7 @@ import Profile from "./components/Profile/Profile";
 import MovieInformation from "./components/MovieInformation/MovieInformation";
 import Actors from "./components/Actors/Actors";
 import NavBar from "./components/NavBar/NavBar";
-import useStyles from './styles'
+import useStyles from "./styles";
 
 const App = () => {
   const classes = useStyles();
@@ -16,9 +16,9 @@ const App = () => {
       <CssBaseline />
       <NavBar />
       <main className={classes.content}>
-        <div className={classes.toolbar}/>
+        <div className={classes.toolbar} />
         <Switch>
-          <Route exact path="/">
+          <Route exact path={["/", "/approved"]}>
             <Movies />
           </Route>
           <Route exact path="/profile/:id">

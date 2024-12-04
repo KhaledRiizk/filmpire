@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { Provider } from "react-redux";
 import store from "./app/store.jsx";
 import App from "./App.jsx";
+import "./main.css";
 
 const theme = createTheme({});
 

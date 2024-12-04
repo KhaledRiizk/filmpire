@@ -16,15 +16,13 @@ export default makeStyles((theme) => ({
     width: "80%",
     [theme.breakpoints.down("lg")]: {
       margin: "0 auto",
-      width: "100%",
-      // height: "550px",
-      // objectFit: "contain",
+      width: "300px",
+      height: "auto",
     },
     [theme.breakpoints.down("md")]: {
       margin: "0 auto",
-      width: "100%",
-      height: "350px",
-      objectFit: "contain",
+      width: "300px",
+      height: "auto",
     },
     [theme.breakpoints.down("sm")]: {
       margin: "0 auto",

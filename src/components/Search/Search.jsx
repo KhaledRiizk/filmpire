@@ -18,7 +18,7 @@ const Search = () => {
     }
   };
 
-  if (location !== "/") return null;
+  if (location.pathname !== "/") return null;
 
   return (
     <div className={classes.searchContainer}>

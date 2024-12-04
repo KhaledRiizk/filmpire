@@ -32,17 +32,19 @@ import useStyles from "./styles";
 import genreIcons from "../../assets/genres";
 import { selectGenreOrCategory } from "../../features/currentGenreOrCategory";
 import MovieList from "../MovieList/MovieList";
+import Pagination from "../Pagination/Pagination";
 
 const MovieInformation = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  const [page, setPage] = useState(1);
   const [open, setOpen] = useState(false);
 
   const { data, isFetching, error } = useGetMovieQuery(id);
   const { data: recommendations, isFetching: isRecommendationsFetching } =
-    useGetRecommendationsQuery({ movie_id: id, list: "recommendations" });
+    useGetRecommendationsQuery({ movie_id: id, list: "recommendations", page });
 
   const isStarred = true;
   const isListed = true;
@@ -181,7 +183,11 @@ const MovieInformation = () => {
                 >
                   IMDB
                 </Button>
-                <Button onClick={() => setOpen(true)} href="#" endIcon={<Theaters />}>
+                <Button
+                  onClick={() => setOpen(true)}
+                  href="#"
+                  endIcon={<Theaters />}
+                >
                   Trailer
                 </Button>
               </ButtonGroup>
@@ -227,7 +233,14 @@ const MovieInformation = () => {
           You might also like
         </Typography>
         {recommendations ? (
-          <MovieList movies={recommendations} numberOfMovies={6} />
+          <>
+            <MovieList movies={recommendations} numberOfMovies={6} />
+            <Pagination
+              page={page}
+              setPage={setPage}
+              totalPages={recommendations?.total_pages}
+            />
+          </>
         ) : (
           <Box>Sorry, nothing was found.</Box>
         )}

@@ -8,12 +8,13 @@ import { Box, Button, CircularProgress, Grid, Typography } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 import MovieList from "../MovieList/MovieList";
 import useStyles from "./styles";
+import Pagination from "../Pagination/Pagination";
 
 const Actors = () => {
   const classes = useStyles();
   const history = useHistory();
   const { id } = useParams();
-  const page = 1;
+  const [page, setPage] = useState(1);
 
   const { data, isFetching, error } = useGetActorQuery({ actor_id: id });
   const { data: actorMovies } = useGetActorMoviesQuery({ id, page });
@@ -39,7 +40,6 @@ const Actors = () => {
       </Box>
     );
   }
-  console.log(data);
 
   return (
     <>
@@ -94,6 +94,11 @@ const Actors = () => {
           More by {data?.name}
         </Typography>
         {actorMovies && <MovieList movies={actorMovies} numberOfMovies={6} />}
+        <Pagination
+          page={page}
+          setPage={setPage}
+          totalPages={actorMovies?.total_pages}
+        />
       </Box>
     </>
   );

@@ -1,8 +1,22 @@
-# React + Vite
+# Filmpire
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Lights, camera, action! Dive into a cinematic adventure. Our movie library is your personal red carpet to a world of entertainment. From heartwarming dramas to thrilling action flicks, we've got something for everyone.
+ 
 
-Currently, two official plugins are available:
+# 👨‍💻 Tech Stack. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Developed this web app using:
+    .React
+    .Material-UI
+    .Redux toolkit
+    .React Router
+
+# ⚙️ Features
+
+✅Explore movies by category
+✅Search movies 
+✅Login to your account 
+✅Dark mode
+✅Add movies to your watchlist or favorites 
+✅Discover specific movie or actor information 
+

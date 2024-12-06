@@ -7,13 +7,13 @@ Lights, camera, action! Dive into a cinematic adventure. Our movie library is yo
 
 Developed this web app using:
    
-    .React
+   .React
     
-    .Material-UI
+   .Material-UI
     
-    .Redux toolkit
+   .Redux toolkit
     
-    .React Router
+   .React Router
 
 # ⚙️ Features
 

@@ -40,7 +40,7 @@ const Pagination = ({ page, setPage, totalPages }) => {
         type="button"
         onClick={handleNext}
       >
-        Prev
+        Next
       </Button>
     </div>
   );
